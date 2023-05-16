@@ -28,18 +28,45 @@ public class FileEx05_필기 {
 			try {
 				fr = new FileReader(file);
 				br = new BufferedReader(fr);
+				int i = 0;
 				
-				String data = br.readLine();
-				System.out.println(data);
-				System.out.println();
+				while(true) {
+					
+					String line = br.readLine();
+					
+					if(line == null) {
+						break;
+					}
+					String[] info = line.split("/");
+					names[i]= info[0];
+					pws[i]= info[1];
+					moneys[i]= Integer.parseInt(info[2]);					
+					
+					i++;
+				}
+				
+				for (int j = 0; j < names.length; j++) {
+					System.out.println(names[j] + "," + pws[j] + "," + moneys[j]);
+				} 
+			
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					fr.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+				
 		}
 	}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {br.close();  
-    } catch (IOException e) {
-    	e.printStackTrace();
-    }
 }
