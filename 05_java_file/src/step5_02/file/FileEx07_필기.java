@@ -134,7 +134,7 @@ public class FileEx07_필기 {
 				
 			}
 			else if (sel == 6) {
-				if (identifier == -1) {
+				if (identifier != -1) {
 					System.out.println("[출금]금액 입력  : ");
 					int money = scan.nextInt();
 					
@@ -179,7 +179,14 @@ public class FileEx07_필기 {
 					System.out.println("[메세지] 로그인 후 사용합니다.");
 				}
 			} // 이체.
-			else if (sel == 8) {} // 잔액조회.
+			else if (sel == 8) {
+				
+				if(identifier != -1) {
+					System.out.println(accs[identifier] + "님의 계좌잔액은 " + moneys[identifier] + "원 입니다.");
+				} else {
+					System.out.println("[메세지] 로그인 후 이용가능합니다. ");
+				}
+			} // 잔액조회.
 			else if (sel == 9) {} // 저장.
 			else if (sel == 10) {} // 로드.
 			else if (sel == 0) { //종료.
