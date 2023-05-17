@@ -133,12 +133,56 @@ public class FileEx07_필기 {
 				}
 				
 			}
-			else if (sel == 6) {}
-			else if (sel == 7) {}
-			else if (sel == 8) {}
-			else if (sel == 9) {}
-			else if (sel == 10) {}
-			else if (sel == 0) {
+			else if (sel == 6) {
+				if (identifier == -1) {
+					System.out.println("[출금]금액 입력  : ");
+					int money = scan.nextInt();
+					
+					if (moneys[identifier] >= money) {
+						moneys[identifier] -= money;
+						System.out.print("[메세지] 출금이 완료되었습니다.");
+					} else {
+						System.out.print("[메세지]잔액이 부족합니다 .");
+					}
+				} else {
+					System.out.print("[메세지] 로그인 후 가능합니다.");
+				}
+			} // 출금.
+			else if (sel == 7) {
+				if(identifier != -1) {
+					System.out.print("[이체] 계좌번호 입력 :");
+					String accout = scan.next();
+					
+					int check = -1;
+					for (int i = 0; i < accsCnt; i++) {
+						if(accs[i].equals(accout) ) {
+							check = 1;
+						}
+					}
+					if (check != -1) {
+						System.out.println("[이체] 입금할 계좌 : ");
+						int money = scan.nextInt();
+						if (moneys[identifier] >= money) {
+							moneys[identifier] -= money;
+							moneys[check] += money;
+							System.out.println("[이체] 이체를 완료하엤습니다.");
+						}
+						else {
+							System.out.println("[메세지] 잔액이 부족합니다.");
+						}
+					}
+					else {
+						System.out.println("[메세지] 계좌번호 확인해주세요.");
+					}
+				}
+				else {
+					System.out.println("[메세지] 로그인 후 사용합니다.");
+				}
+			} // 이체.
+			else if (sel == 8) {} // 잔액조회.
+			else if (sel == 9) {} // 저장.
+			else if (sel == 10) {} // 로드.
+			else if (sel == 0) { //종료.
 				break;
 			}
 			
